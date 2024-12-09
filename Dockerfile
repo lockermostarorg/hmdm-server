@@ -25,8 +25,8 @@ RUN apt-get update && \
     apt-get install -y aapt && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy the built war file
-COPY --from=builder /app/server/target/server.war /usr/local/tomcat/webapps/ROOT.war
+# Copy the built war file - Changed from server.war to launcher.war
+COPY --from=builder /app/server/target/launcher.war /usr/local/tomcat/webapps/ROOT.war
 COPY --from=builder /app/server/build.properties /usr/local/tomcat/build.properties
 
 # Create required directories
